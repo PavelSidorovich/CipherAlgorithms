@@ -22,4 +22,4 @@ WORKDIR $APP_HOME
 COPY --from=TEMP_BUILD_IMAGE $APP_HOME/web/build/libs/$ARTIFACT_NAME .
 
 EXPOSE 8080
-ENTRYPOINT exec java -jar -Dserver.port=$PORT ${ARTIFACT_NAME}
+ENTRYPOINT exec java -jar ${ARTIFACT_NAME} --server.port=$PORT
