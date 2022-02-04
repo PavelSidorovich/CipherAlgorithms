@@ -24,10 +24,7 @@
 #ENTRYPOINT exec java -jar ${ARTIFACT_NAME}
 
 FROM adoptopenjdk/openjdk11:latest
-
-ENV ARTIFACT_NAME=web-0.0.1-SNAPSHOT.war
-
-RUN mkdir -p /apps
-COPY ./war/${ARTIFACT_NAME} /apps/web-0.0.1-SNAPSHOT.war
-
-ENTRYPOINT exec java -jar /apps/${ARTIFACT_NAME}
+VOLUME /tmp
+COPY web/build/libs/web-0.0.1-SNAPSHOT.war web-0.0.1-SNAPSHOT.war
+COPY war/web-0.0.1-SNAPSHOT.war web-0.0.1-SNAPSHOT.war
+ENTRYPOINT ["java","-jar","/web-0.0.1-SNAPSHOT.war"]
