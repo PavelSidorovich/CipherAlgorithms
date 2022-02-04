@@ -28,6 +28,6 @@ FROM adoptopenjdk/openjdk11:latest
 ENV ARTIFACT_NAME=web-0.0.1-SNAPSHOT.war
 
 RUN mkdir -p /apps
-COPY ./web/build/libs/${ARTIFACT_NAME} /apps/web-0.0.1-SNAPSHOT.war
+COPY ./war/${ARTIFACT_NAME} /apps/web-0.0.1-SNAPSHOT.war
 
 ENTRYPOINT exec java -jar /apps/${ARTIFACT_NAME}
