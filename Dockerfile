@@ -21,7 +21,7 @@ ENV APP_HOME=/app/
 WORKDIR $APP_HOME
 COPY --from=TEMP_BUILD_IMAGE $APP_HOME/web/build/libs/$ARTIFACT_NAME .
 
-ENTRYPOINT exec java -XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap -Xmx256m -Xss512k -XX:MetaspaceSize=100m -jar ${ARTIFACT_NAME}
+ENTRYPOINT exec java -XX:+UseContainerSupport -Xmx256m -Xss512k -XX:MetaspaceSize=100m -jar ${ARTIFACT_NAME}
 
 #FROM adoptopenjdk/openjdk11:latest
 #VOLUME /tmp
